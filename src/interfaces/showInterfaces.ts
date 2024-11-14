@@ -1,9 +1,31 @@
-export interface IRequired<T> {
+import {ILanguageEnumeratedType, 
+    ICountryEnumeratedType, 
+    IConfirmationEnumeratedType,
+    ITransactionTypeCodeEnumeratedType,
+    IMaritalStatusEnumeratedType,
+    IGenderEnumeratedType,
+    ISaleClassEnumeratedType,
+    VehicleClassEnumeratedType,
+    IDriveTypeEnumeratedType,
+    ITransmissionTypeEnumeratedType,
+    IColorItemEnumeratedType,
+    IBoatEngineTypeEnumeratedType,
+    ICylinderConfigurationEnumeratedType,
+    IStartingSystemTypeEnumeratedType,
+    IVehicleUseContentType,
+    IPriceEnumeratedType,
+    IPartTypeEnumeratedType,
+    IUOMEnumeratedType,
+    IPartSalesRestrictionCodeEnumeratedType,
+    IPartOrderingRestrictionCodeEnumeratedType,
+    TaxTypeEnumeratedType,
+    ITaxTypeIdEnumeratedType,
+    ImagePerspectiveEnumeratedType} from './scl';
 
+export interface IRequired<T> {
 }
 
 export interface IDeprecated<T> {
-
 }
 
 export interface IAttribute<T> {
@@ -674,7 +696,7 @@ export interface IVehicleABIEType {
     get TransmissionGroup(): ITransmissionGroupType;
     get ColorGroup(): Iterable<IColorGroupType>;
     /**Vehicle Class */
-    get VehicleClassCode(): IVehicleClassEnumeratedType;
+    get VehicleClassCode(): VehicleClassEnumeratedType;
     /**Type of vehicle fuel */
     get FuelTypeCode(): IFuelTypeCodeType;
     /**Indicates whether the vehicle is 2 or 4 wheel drive */
@@ -1296,7 +1318,7 @@ export interface IBrandedInfoType {
 
 export interface ITaxType {
     /**Identifies the tax type */
-    get TaxTypeCode(): ITaxTypeEnumeratedType;
+    get TaxTypeCode(): TaxTypeEnumeratedType;
     /**Free form text description of tax amount */
     get TaxDescription(): Iterable<ITextType>;
     /**Actual amount of tax paid */
@@ -1352,7 +1374,7 @@ export interface IFleetQuantityType {
     /**Deprecated: Use VehicleMake */
     get MakeString(): IDeprecated<IStringType>;
     /**Class of vehicle */
-    get VehicleClassCode(): IVehicleClassEnumeratedType;
+    get VehicleClassCode(): VehicleClassEnumeratedType;
 }
 
 export interface IServiceCampaignType {
@@ -1398,7 +1420,7 @@ export interface IImageAttachmentExtendedType extends IImageAttachmentType {
     /**Free-form text description of the image.  This field is used to provide a more detailed description than the ImageTitle. */
     get ImageDescription(): Iterable<ITextType>;
     /**Indicates the perspective from which the photo was taken */
-    get ImagePerspectiveCode(): IImagePerspectiveEnumeratedType;
+    get ImagePerspectiveCode(): ImagePerspectiveEnumeratedType;
     /**Indicates the usage preference */
     get UsagePreference(): IPreferenceABIEType;
     /**Used to provide additional information that helps describe the image.  Can be used to add additional notes about the image and information beyond a general description */
@@ -1507,54 +1529,7 @@ export interface ISignature {
 }
 //#endregion
 
-//#region scl
-export interface IImagePerspectiveEnumeratedType {
-}
-export interface IVehicleClassEnumeratedType {
-}
-export interface ITaxTypeEnumeratedType {
-}
-export interface ITaxTypeIdEnumeratedType {
-}
-export interface IPartTypeEnumeratedType {
-}
-export interface IUOMEnumeratedType {
-}
-export interface IPartSalesRestrictionCodeEnumeratedType {
-}
-export interface IPartOrderingRestrictionCodeEnumeratedType {
-}
-export interface IPriceEnumeratedType {
-}
-export interface IVehicleUseContentType {
-}
-export interface ISaleClassEnumeratedType {
-}
-export interface IBoatEngineTypeEnumeratedType {
-}
-export interface ICylinderConfigurationEnumeratedType {
-}
-export interface IStartingSystemTypeEnumeratedType {
-}
-export interface IColorItemEnumeratedType {
-}
-export interface ITransmissionTypeEnumeratedType {
-}
-export interface IDriveTypeEnumeratedType {
-}
-export interface IMaritalStatusEnumeratedType {
-}
-export interface IGenderEnumeratedType {
-}
-export interface ITransactionTypeCodeEnumeratedType {
-}
-export interface ICountryEnumeratedType {
-}
-export interface IConfirmationEnumeratedType {
-}
-export interface ILanguageEnumeratedType {
-}
-//#endregion
+
 
 //#region sqdt
 export interface ILengthMeasureType {
