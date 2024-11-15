@@ -1,7 +1,7 @@
 import {ILanguageEnumeratedType, 
     ICountryEnumeratedType, 
     IConfirmationEnumeratedType,
-    ITransactionTypeCodeEnumeratedType,
+    ITransactionTypeEnumeratedType,
     IMaritalStatusEnumeratedType,
     IGenderEnumeratedType,
     ISaleClassEnumeratedType,
@@ -12,7 +12,7 @@ import {ILanguageEnumeratedType,
     IBoatEngineTypeEnumeratedType,
     ICylinderConfigurationEnumeratedType,
     IStartingSystemTypeEnumeratedType,
-    IVehicleUseContentType,
+    IVehicleUseEnumeratedType,
     IPriceEnumeratedType,
     IPartTypeEnumeratedType,
     IUOMEnumeratedType,
@@ -175,7 +175,7 @@ export interface IVehicleInventoryHeaderType extends IHeaderBaseType {
     /**Date of invoice */
     get InvoiceDate(): IDateType;
     /**Type of transaction */
-    get TransactionTypeCode(): ITransactionTypeCodeEnumeratedType;
+    get TransactionTypeCode(): ITransactionTypeEnumeratedType;
     /**The party to which good or services were sold. */
     get SoldToParty(): IPartyABIEType;
     /**The party receiving the goods or services. */
@@ -1044,7 +1044,7 @@ export interface ICertificationGroupType {
     /**Odometer reading when the vehicle was certified */
     get ActualOdomoter(): ILengthMeasureType;
     /**A code indicated how the vehicle was previously used.  Refer to the UseEnumeratedType code list */
-    get VehiclePreviousUseCode(): IVehicleUseContentType; 
+    get VehiclePreviousUseCode(): IVehicleUseEnumeratedType; 
     /**Individual or company that owned the vehicle previously */
     get PreviousOwnerParty(): IPartyABIEType;
     /**A code indicating how the vehicle was previously used.  Refer to the VehicleUseEnumeratedType code */
