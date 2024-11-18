@@ -1,25 +1,25 @@
-import {ILanguageEnumeratedType, 
-    ICountryEnumeratedType, 
-    IConfirmationEnumeratedType,
-    ITransactionTypeEnumeratedType,
-    IMaritalStatusEnumeratedType,
-    IGenderEnumeratedType,
-    ISaleClassEnumeratedType,
+import {LanguageEnumeratedType, 
+    CountryEnumeratedType, 
+    ConfirmationEnumeratedType,
+    TransactionTypeEnumeratedType,
+    MaritalStatusEnumeratedType,
+    GenderEnumeratedType,
+    SaleClassEnumeratedType,
     VehicleClassEnumeratedType,
-    IDriveTypeEnumeratedType,
-    ITransmissionTypeEnumeratedType,
-    IColorItemEnumeratedType,
-    IBoatEngineTypeEnumeratedType,
-    ICylinderConfigurationEnumeratedType,
-    IStartingSystemTypeEnumeratedType,
-    IVehicleUseEnumeratedType,
-    IPriceEnumeratedType,
-    IPartTypeEnumeratedType,
-    IUOMEnumeratedType,
-    IPartSalesRestrictionCodeEnumeratedType,
-    IPartOrderingRestrictionCodeEnumeratedType,
+    DriveTypeEnumeratedType,
+    TransmissionTypeEnumeratedType,
+    ColorItemEnumeratedType,
+    BoatEngineTypeEnumeratedType,
+    CylinderConfigurationEnumeratedType,
+    StartingSystemTypeEnumeratedType,
+    VehicleUseEnumeratedType,
+    PriceEnumeratedType,
+    PartTypeEnumeratedType,
+    UOMEnumeratedType,
+    PartSalesRestrictionCodeEnumeratedType,
+    PartOrderingRestrictionCodeEnumeratedType,
     TaxTypeEnumeratedType,
-    ITaxTypeIdEnumeratedType,
+    TaxTypeIdEnumeratedType,
     ImagePerspectiveEnumeratedType} from './scl';
 
 export interface IRequired<T> {
@@ -47,7 +47,7 @@ export interface IBusinessObjectDocumentType {
     /**Indicates whether this BOD is being sent in a Test or a Production mode.  Default=Production */
     get systemEnvironmentCode(): IAttribute<ISystemEnvironmentCodeContentType>; //oacl
     /**Indicates the language that the contents of the BOD is in unless otherwise stated.  Default=en-US */
-    get languageCode(): IAttribute<ILanguageEnumeratedType>;//scl
+    get languageCode(): IAttribute<LanguageEnumeratedType>;//scl
 }
 
 export interface IApplicationAreaType {
@@ -78,7 +78,7 @@ export interface ISenderType extends ISenderBaseType {
     /**Dealer code area number */
     get AreaNumber(): ITextType;
     /**Source Dealer country location */
-    get DealerCountryCode(): ICountryEnumeratedType;
+    get DealerCountryCode(): CountryEnumeratedType;
     /**This code is used to define the language of the data used in this transaction */
     get LanguageCode(): ILanguageCodeType;
     /**Indicates if the user requests to receive pending mail that has been stored and has yet not been delivered. */
@@ -107,7 +107,7 @@ export interface ISenderBaseType {
     get TaskID(): IIdentifierType;
     /**Enables the sending application to indicate the instance identifier of the event or task that caused the BOD to be created */
     get ReferenceID(): IIdentifierType;
-    get ConfirmationCode(): IConfirmationEnumeratedType; //scl
+    get ConfirmationCode(): ConfirmationEnumeratedType; //scl
     /**Identifies the authorization level of the user or application that is sending the BOD message */
     get AuthorizationID(): IIdentifierType;
 }
@@ -128,7 +128,7 @@ export interface IDestinationType {
     /**Dealer code area number */
     get AreaNumber(): ITextType;
     /**Target Dealer country location */
-    get DealerTargetCountry(): ICountryEnumeratedType;
+    get DealerTargetCountry(): CountryEnumeratedType;
     /**The Party Receiver Id field uniquely identifies the receiver of the message */
     get PartyReceiverID(): IIdentifierType;
     /**The Location Receiver Id field uniquely identifies the location of the Receiver of a message.  
@@ -175,7 +175,7 @@ export interface IVehicleInventoryHeaderType extends IHeaderBaseType {
     /**Date of invoice */
     get InvoiceDate(): IDateType;
     /**Type of transaction */
-    get TransactionTypeCode(): ITransactionTypeEnumeratedType;
+    get TransactionTypeCode(): TransactionTypeEnumeratedType;
     /**The party to which good or services were sold. */
     get SoldToParty(): IPartyABIEType;
     /**The party receiving the goods or services. */
@@ -357,9 +357,9 @@ export interface IPersonType {
     /**A word or phrase added to the end of a name */
     get NameSuffix(): ITextType;
     /**Identifies marital status of business party */
-    get MaritalStatusCode(): IMaritalStatusEnumeratedType;
+    get MaritalStatusCode(): MaritalStatusEnumeratedType;
     /**Gender of party */
-    get GenderCode(): IGenderEnumeratedType;
+    get GenderCode(): GenderEnumeratedType;
     /**Birth date of party */
     get BirthDate(): IDateType;
     get AgeMeasure(): ITimeMeasureType;
@@ -681,7 +681,7 @@ export interface IVehicleABIEType {
     /**Vehicle make code - usually available in the VIN number (use NCIC code) */
     get MakeString(): IStringType;
     /**Class of sale */
-    get SaleClassCode(): ISaleClassEnumeratedType;
+    get SaleClassCode(): SaleClassEnumeratedType;
     /**Condition of vehicle */
     get Condition(): ITextType;
     /**Any vehicle related notes */
@@ -702,7 +702,7 @@ export interface IVehicleABIEType {
     /**Indicates whether the vehicle is 2 or 4 wheel drive */
     get DriveTrain(): ITextType;
     /**Designates Vehicle Drive Type */
-    get DriveTypeCode(): IDriveTypeEnumeratedType;
+    get DriveTypeCode(): DriveTypeEnumeratedType;
     /**Passenger/seat capacity count of vehicle */
     get VehiclePassengersNumeric(): INumericType;
     /**Describes the engine on the vehicle */
@@ -820,7 +820,7 @@ export interface ITransmissionGroupType {
     /**Transmission Serial Number */
     get TransmissionCode(): ICodeType;
     /**Vehicle Transmission Type */
-    get TransmissionTypeCode(): ITransmissionTypeEnumeratedType;
+    get TransmissionTypeCode(): TransmissionTypeEnumeratedType;
     /**Name of transmission type */
     get TransmissionTypeName(): ITextType
 }
@@ -828,7 +828,7 @@ export interface ITransmissionGroupType {
 /**The ColorGroup component provides color information about a specific item */
 export interface IColorGroupType {
     /**Identifies the item for which color is being described */
-    get ColorItemCode(): IRequired<IColorItemEnumeratedType>;
+    get ColorItemCode(): IRequired<ColorItemEnumeratedType>;
     /**Manufacturer-assigned color code */
     get ManufacturerColorCode(): ICodeType;
     /**Description of a color */
@@ -848,7 +848,7 @@ export interface IEngineType {
     /**Vehicle designated model year */
     get ModelYear(): IYearDateType;
     /**Class of sale */
-    get SaleClassCode(): ISaleClassEnumeratedType;
+    get SaleClassCode(): SaleClassEnumeratedType;
     /**Condition of vehicle */
     get Condition(): ITextType;
     /**Manufacturer-assigned model code of vehicle - usually available in the VIN number (use NCIC code) */
@@ -857,7 +857,7 @@ export interface IEngineType {
     get VehicleStockString(): IStringType;
     get ColorGroup(): Iterable<IColorGroupType>;
     /**Type of engine or or for a boat */
-    get BoatEngineTypeCode(): IBoatEngineTypeEnumeratedType;
+    get BoatEngineTypeCode(): BoatEngineTypeEnumeratedType;
     /**Type of vehicle fuel */
     get FuelTypeCode(): IFuelTypeCodeType;
     /**Measured in RPM is the prop speed at full throttle */
@@ -877,7 +877,7 @@ export interface IEngineType {
     /**Piston movement distance */
     get StrokeMeasure(): ILengthMeasureType;
     /**Indicates the way the engine cylinder is configured */
-    get CylinderConfigurationCode(): ICylinderConfigurationEnumeratedType;
+    get CylinderConfigurationCode(): CylinderConfigurationEnumeratedType;
     /**Represents the number of cylinders in the vehicle engine */
     get NumberOfEngineCylindersNumeric(): INumericType;
     /**The type of system used to get the fuel into the engine cylinders */
@@ -891,7 +891,7 @@ export interface IEngineType {
     /**Indicates if the engine has a power trim */
     get PowerTrimIndicator(): IIndicatorType;
     /**The method required to start the engine */
-    get StartingSystemTypeCode(): IStartingSystemTypeEnumeratedType;
+    get StartingSystemTypeCode(): StartingSystemTypeEnumeratedType;
     /**System used to fire the engine */
     get IgnitionSystem(): ITextType;
     /**System used to lubricate the engine */
@@ -1044,7 +1044,7 @@ export interface ICertificationGroupType {
     /**Odometer reading when the vehicle was certified */
     get ActualOdomoter(): ILengthMeasureType;
     /**A code indicated how the vehicle was previously used.  Refer to the UseEnumeratedType code list */
-    get VehiclePreviousUseCode(): IVehicleUseEnumeratedType; 
+    get VehiclePreviousUseCode(): VehicleUseEnumeratedType; 
     /**Individual or company that owned the vehicle previously */
     get PreviousOwnerParty(): IPartyABIEType;
     /**A code indicating how the vehicle was previously used.  Refer to the VehicleUseEnumeratedType code */
@@ -1116,7 +1116,7 @@ export interface IPricingABIEType {
 /**A sum of money for which something is or may be bought or sold */
 export interface IPriceABIEType {
     /**A code specifying the type of price */
-    get PriceCode(): IPriceEnumeratedType;
+    get PriceCode(): PriceEnumeratedType;
     /**The monetary value of the price charged */
     get ChargeAmount(): IAmountType;
     /**A textual description of price */
@@ -1158,7 +1158,7 @@ export interface IPartsProductItemType {
     /**The description of a part or product item as text */
     get PartItemDescription(): Iterable<ITextType>;
     /**Specifies whether the parts are indicated by manufacturer part code or part number - H = Manufacturer Part Code, P = Part Number */
-    get PartTypeCode(): IPartTypeEnumeratedType;
+    get PartTypeCode(): PartTypeEnumeratedType;
     /**Gifts, literature, keys, regular parts inventory class used in DMS system */
     get PartClassCode(): ICodeType;
     /**Identifies the part manufacturer */
@@ -1190,7 +1190,7 @@ export interface IPartsProductItemType {
     /**The condition of a part */
     get PartConditionCode(): IPartConditionCodeType;
     /**Units of measure */
-    get UOMCode(): IUOMEnumeratedType;
+    get UOMCode(): UOMEnumeratedType;
     /**Vehicle Maintenance Reporting Standards code */
     get VMRSCode(): ICodeType;
     /**Indicates level of stocking maintained by OEM for this part.  This pertains not only to the replenishment algorithm, but the number of stocking locations */
@@ -1210,9 +1210,9 @@ export interface IPartsProductItemType {
     /**Service File description */
     get ServiceFileDescription(): ITextType;
     /**Part sales restrictions */
-    get PartDealerSalesRestriction(): IPartSalesRestrictionCodeEnumeratedType;
+    get PartDealerSalesRestriction(): PartSalesRestrictionCodeEnumeratedType;
     /**Ordering restrictions */
-    get PartOrderRestriction(): IPartOrderingRestrictionCodeEnumeratedType;
+    get PartOrderRestriction(): PartOrderingRestrictionCodeEnumeratedType;
     /**Source code for the part */
     get PartSourceCode(): ICodeType;
     /**Description of the source code */
@@ -1332,7 +1332,7 @@ export interface ITaxType {
     /**Total non-taxable price */
     get NonTaxableAmount(): IAmountType;
     /**Tax type identification */
-    get TaxTypeIdCode(): ITaxTypeIdEnumeratedType;
+    get TaxTypeIdCode(): TaxTypeIdEnumeratedType;
     /**Determines whether the dealer wants to claim tax on the cost */
     get TaxabilityIndicator(): IIndicatorType;
     /**Indicates whether the tax is capitalized, meaning whether it is included in the monthly payments.  If the tax is not capitalized it is to be paid up front */
