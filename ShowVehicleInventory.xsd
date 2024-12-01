@@ -640,7 +640,7 @@
     </xsd:element>
    <xsd:element name="DocumentType" type="sqdt:AssigningOrganizationPartyIdType">
         <xsd:annotation>
-            <xsd:documentation source="http://www.starstandard.org/STAR/5">A code specifying the agency type issuing the document.</xsd:documentation>
+            <xsdAssigningOrganizationPartyIdType:documentation source="http://www.starstandard.org/STAR/5">A code specifying the agency type issuing the document.</xsd:documentation>
         </xsd:annotation>
     </xsd:element>
    <xsd:element name="DoingBusinessAsName" type="udt:TextType">
