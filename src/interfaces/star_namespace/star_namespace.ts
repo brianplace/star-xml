@@ -27,7 +27,7 @@ export interface IBusinessObjectDocumentType {
     get versionID(): BasicTypes.IDeprecated<BasicTypes.IAttribute<UDT.IString>>;
     /**Indicates whether this BOD is being sent in a "Test" or a "Production" mode.  
      * Default="Production" */
-    get systemEnvironmentCode(): BasicTypes.IAttribute<OACL.ISystemEnvironmentCodeContentType>;
+    get systemEnvironmentCode(): BasicTypes.IAttribute<OACL.SystemEnvironmentCodeContentType>;
     /**Indicates the language that the contents of the BOD is in unless otherwise stated.  
      * Default="en-US" */
     get languageCode(): BasicTypes.IAttribute<SCL.ILanguageEnumeratedType>;
@@ -1536,7 +1536,7 @@ export interface IChangeVehicleInventoryDataAreaType {
 }
 
 export interface IChangeType extends IActionVerbType {
-    get responseCode(): BasicTypes.IAttribute<OACL.IResponseActionCodeContentType>;
+    get responseCode(): BasicTypes.IAttribute<OACL.ResponseActionCodeContentType>;
 }
 
 export interface IActionVerbType extends OAGIS.IVerbType {
