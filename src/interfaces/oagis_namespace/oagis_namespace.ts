@@ -6,3 +6,5 @@ export interface IVerbType {
 }
 export interface IResponseCriteria {
 }
+export interface IActionCriteriaType {
+}

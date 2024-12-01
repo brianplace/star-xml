@@ -1525,3 +1525,20 @@ export interface IIncentiveEffectivePeriodABIEType {
     /**Incentive end date */
     get EndDate(): UDT.IDateType; //udt
 }
+
+export interface IChangeVehicleInventoryType extends IBusinessObjectDocumentType {
+    get ChangeVehicleInventoryDataArea(): IChangeVehicleInventoryDataAreaType;
+}
+
+export interface IChangeVehicleInventoryDataAreaType {
+    get Change(): IChangeType;
+    get VehicleInventory(): Iterable<IVehicleInventoryType>;
+}
+
+export interface IChangeType extends IActionVerbType {
+    get responseCode(): BasicTypes.IAttribute<OACL.IResponseActionCodeContentType>;
+}
+
+export interface IActionVerbType extends OAGIS.IVerbType {
+    get ActionCriteria(): Iterable<OAGIS.IActionCriteriaType>
+}
