@@ -39,7 +39,7 @@ export interface IApplicationAreaType {
     /**This is used as the creation moment of this Business Object Document */
     get CreationDateTime(): BasicTypes.IRequired<UDT.IDateTimeType>;
     /**If the BOD is to be signed the signature element is included, otherwise it is not.  Signature supports any digital signature that may be used by an implementation of OAGIS.  The qualifying Agency identifies the agency that provided the format for the signature */
-    get Signature(): OAGIS.ISignature;
+    get Signature(): OAGIS.SignatureType;
     /**The BODId provides a place to carry a Globally Unique Identifier (GUID) that will make each Business Object Document instance uniquely identifiable. 
      * This is a critical success factor to enable software developers to use the Globally Unique Identifier (GUID) to build services or capabilities*/
     get BODID(): UDT.IIdentiferType;
@@ -150,14 +150,14 @@ export interface IShowVehicleInventoryDataAreaType {
 }
 
 export interface IShowType extends IResponseVerbType {
-    get recordSetStartNumber(): BasicTypes.IAttribute<OAGIS.IPositiveIntegerNumericType>;
-    get recordSetCount(): BasicTypes.IAttribute<OAGIS.IPositiveIntegerNumericType>;
-    get recordSetTotle(): BasicTypes.IAttribute<OAGIS.IPositiveIntegerNumericType>;
+    get recordSetStartNumber(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
+    get recordSetCount(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
+    get recordSetTotle(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
     get recordSetCompleteIndicator(): BasicTypes.IAttribute<UDT.IIndicatorType>;
     get recordSetReferenceId(): BasicTypes.IAttribute<QDT.INormalizedStringType>;
 }
 
-export interface IResponseVerbType extends OAGIS.IVerbType {
+export interface IResponseVerbType extends OAGIS.VerbType {
     /**A copy of the ApplicationArea for the original BOD that was processed. 
      * Present either as additional reference information, or for use in identifying the BOD in situations where a BODReference is not known. */
     get OriginalApplicationArea(): IApplicationAreaType;
@@ -170,7 +170,7 @@ export interface IResponseVerbType extends OAGIS.IVerbType {
      * ReturnCriteria tells the BOD recipient which parts of the PurchaseOrder should be populated with content when the response (ShowPurchaseOrder) is formulated. 
      * The expressionLanguage indicates the expression language being used. In order for the ReturnCriteria expression to be evaluable by the BOD recipient, 
      * the recipient must be capable of processing and interpreting the specified expression language. XPath is the default, due to its ubiquity among XML processing technologies. */
-    get ResponseCriteria(): Iterable<OAGIS.IResponseCriteria>
+    get ResponseCriteria(): Iterable<OAGIS.ResponseActionCriteriaType>
 }
 
 export interface IVehicleInventoryType {
@@ -1539,6 +1539,6 @@ export interface IChangeType extends IActionVerbType {
     get responseCode(): BasicTypes.IAttribute<OACL.ResponseActionCodeContentType>;
 }
 
-export interface IActionVerbType extends OAGIS.IVerbType {
-    get ActionCriteria(): Iterable<OAGIS.IActionCriteriaType>
+export interface IActionVerbType extends OAGIS.VerbType {
+    get ActionCriteria(): Iterable<OAGIS.ActionCriteriaType>
 }

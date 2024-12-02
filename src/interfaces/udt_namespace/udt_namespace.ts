@@ -22,3 +22,5 @@ export interface IString {
 }
 export interface IMeasureType {
 }
+export interface ITimeType {
+}
