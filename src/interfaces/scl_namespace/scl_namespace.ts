@@ -1,46 +1,57 @@
-export interface IImagePerspectiveEnumeratedType {
+import { ImagePerspectiveEnumeratedType,
+    VehicleClassEnumeratedType,
+    TaxTypeEnumeratedType,
+    TaxTypeIdEnumeratedType,
+    PartTypeEnumeratedType,
+    UOMEnumeratedType,
+    PartSalesRestrictionCodeEnumeratedType,
+    PartOrderingRestrictionCodeEnumeratedType,
+    PriceEnumeratedType,
+    VehicleUseEnumeratedType,
+    LanguageEnumeratedType,
+    TwoLetterCountryEnumType,
+    ThreeLetterCountryEnumType,
+    ConfirmationEnumeratedType,
+    TransactionTypeEnumeratedType,
+    MaritalStatusEnumeratedType,
+    GenderEnumeratedType,
+    SaleClassEnumeratedType,
+    DriveTypeEnumeratedType,
+    TransmissionTypeEnumeratedType,
+    ColorItemEnumeratedType,
+    BoatEngineTypeEnumeratedType,
+    CylinderConfigurationEnumeratedType,
+    StartingSystemTypeEnumeratedType
+ } from './enums';
+import { VehicleUseContentType } from './types/VehicleUseContentType';
+import { CountryEnumeratedType } from './types/CountryEnumeratedType';
+
+export { ImagePerspectiveEnumeratedType,
+    VehicleClassEnumeratedType,
+    TaxTypeEnumeratedType,
+    TaxTypeIdEnumeratedType,
+    PartTypeEnumeratedType,
+    UOMEnumeratedType,
+    PartSalesRestrictionCodeEnumeratedType,
+    PartOrderingRestrictionCodeEnumeratedType,
+    PriceEnumeratedType,
+    VehicleUseEnumeratedType,
+    LanguageEnumeratedType,
+    TwoLetterCountryEnumType,
+    ThreeLetterCountryEnumType,
+    ConfirmationEnumeratedType,
+    TransactionTypeEnumeratedType,
+    MaritalStatusEnumeratedType,
+    GenderEnumeratedType,
+    SaleClassEnumeratedType,
+    DriveTypeEnumeratedType,
+    TransmissionTypeEnumeratedType,
+    ColorItemEnumeratedType,
+    BoatEngineTypeEnumeratedType,
+    CylinderConfigurationEnumeratedType,
+    StartingSystemTypeEnumeratedType
 }
-export interface IVehicleClassEnumeratedType {
-}
-export interface ITaxTypeEnumeratedType {
-}
-export interface ITaxTypeIdEnumeratedType {
-}
-export interface IPartTypeEnumeratedType {
-}
-export interface IUOMEnumeratedType {
-}
-export interface IPartSalesRestrictionCodeEnumeratedType {
-}
-export interface IPartOrderingRestrictionCodeEnumeratedType {
-}
-export interface IPriceEnumeratedType {
-}
-export interface IVehicleUseContentType {
-}
-export interface ILanguageEnumeratedType {
-}
-export interface ICountryEnumeratedType {
-}
-export interface IConfirmationEnumeratedType {
-}
-export interface ITransactionTypeEnumeratedType {
-}
-export interface IMaritalStatusEnumeratedType {
-}
-export interface IGenderEnumeratedType {
-}
-export interface ISaleClassEnumeratedType {
-}
-export interface IDriveTypeEnumeratedType {
-}
-export interface ITransmissionTypeEnumeratedType {
-}
-export interface IColorItemEnumeratedType {
-}
-export interface IBoatEngineTypeEnumeratedType {
-}
-export interface ICylinderConfigurationEnumeratedType {
-}
-export interface IStartingSystemTypeEnumeratedType {
-}
+
+export { VehicleUseContentType,
+    CountryEnumeratedType,
+ }

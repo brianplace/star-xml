@@ -30,7 +30,7 @@ export interface IBusinessObjectDocumentType {
     get systemEnvironmentCode(): BasicTypes.IAttribute<OACL.SystemEnvironmentCodeContentType>;
     /**Indicates the language that the contents of the BOD is in unless otherwise stated.  
      * Default="en-US" */
-    get languageCode(): BasicTypes.IAttribute<SCL.ILanguageEnumeratedType>;
+    get languageCode(): BasicTypes.IAttribute<SCL.LanguageEnumeratedType>;
 }
 
 export interface IApplicationAreaType {
@@ -62,7 +62,7 @@ export interface ISenderType extends ISenderBaseType {
     /**Dealer code area number */
     get AreaNumbeR(): UDT.ITextType;
     /**Source Dealer country location */
-    get DealerCountryCode(): SCL.ICountryEnumeratedType;
+    get DealerCountryCode(): SCL.CountryEnumeratedType;
     /**This code is used to define the language of the data used in this transaction */
     get LanguageCode(): SQDT.ILanguageCodeType;
     /**Indicates if the user requests to receive pending mail that has been stored and has not been delivered yet. */
@@ -98,7 +98,7 @@ export interface ISenderBaseType {
      * The receiving application puts the value in Reference ID of the incoming message in the Reference ID of any acknowledgement messages. 
      * The Reference Id will not be required to tie two collaborations together such as Parts Order and Parts Shipment. */
     get ReferenceID(): UDT.IIdentiferType;
-    get ConfirmationCode(): SCL.IConfirmationEnumeratedType;
+    get ConfirmationCode(): SCL.ConfirmationEnumeratedType;
     /**Identifies the authorization level of the user or application that is sending the Business Object Document Message.  Used as User ID */
     get AuthorizationID(): UDT.IIdentiferType;
 }
@@ -119,7 +119,7 @@ export interface IDestinationType {
     /**Dealer code area number */
     get AreaNumber(): UDT.ITextType;
     /**Target Dealer country location */
-    get DealerTargetCountry(): SCL.ICountryEnumeratedType;
+    get DealerTargetCountry(): SCL.CountryEnumeratedType;
     /**The Party Receiver Id field uniquely identifies the Receiver of the message. 
      * This element can be used for parties within the Automotive Community as well as external parties. 
      * Party Id is not intended as a replacement for the Dealer Number. 
@@ -188,7 +188,7 @@ export interface IVehicleInventoryHeaderType extends IHeaderBaseType {
     /**Date of invoice */
     get InvoiceDate(): UDT.IDateType;
     /**Type of transaction */
-    get TransactionTypeCode(): SCL.ITransactionTypeEnumeratedType;
+    get TransactionTypeCode(): SCL.TransactionTypeEnumeratedType;
     /**The party to which good or services were sold. */
     get SoldToParty(): IPartyABIEType;
     /**The party receiving the goods or services. */
@@ -382,9 +382,9 @@ export interface IPersonType {
     /**A word or phrase added to the end of a name */
     get NameSuffix(): UDT.ITextType;
     /**Identifies marital status of business party */
-    get MaritalStatusCode(): SCL.IMaritalStatusEnumeratedType;
+    get MaritalStatusCode(): SCL.MaritalStatusEnumeratedType;
     /**Gender of party */
-    get GenderCode(): SCL.IGenderEnumeratedType;
+    get GenderCode(): SCL.GenderEnumeratedType;
     /**Birth Date of party */
     get BirthDate(): UDT.IDateType;
     /**The numeric value of a person or parties age */
@@ -703,7 +703,7 @@ export interface IVehicleABIEType {
     /**Vehicle make code - usually available in the VIN number (use NCIC code) */
     get MakeString(): QDT.IStringType;
     /**Class of sale */
-    get SaleClassCode(): SCL.ISaleClassEnumeratedType;
+    get SaleClassCode(): SCL.SaleClassEnumeratedType;
     /**Condition of vehicle */
     get Condition(): UDT.ITextType;
     /**Any vehicle related notes */
@@ -718,13 +718,13 @@ export interface IVehicleABIEType {
     get TransmissionGroup(): ITransmissionGroupType;
     get ColorGroup(): Iterable<IColorGroupType>;
     /**Vehicle class */
-    get VehicleClassCode(): SCL.IVehicleClassEnumeratedType;
+    get VehicleClassCode(): SCL.VehicleClassEnumeratedType;
     /**Type of vehicle fuel */
     get FuelTypeCode(): SQDT.IFuelTypeCodeType;
     /**Indicates whether the vehicle is 2 or 4 wheel drive */
     get DriveTrain(): UDT.ITextType;
     /**Designates Vehicle drive type */
-    get DriveTypeCode(): SCL.IDriveTypeEnumeratedType;
+    get DriveTypeCode(): SCL.DriveTypeEnumeratedType;
     /**Passneger/seat capacity count of vehicle */
     get VehiclePassengersNumeric(): UDT.INumericType;
     /**Describes the engine on the vehicle */
@@ -842,7 +842,7 @@ export interface ITransmissionGroupType {
     /**Transmission Serial Number */
     get TransmissionCode(): UDT.ICodeType;
     /**Vehicle Transmission Type */
-    get TransmissionTypeCode(): SCL.ITransmissionTypeEnumeratedType;
+    get TransmissionTypeCode(): SCL.TransmissionTypeEnumeratedType;
     /**Name of transmission type */
     get TransmissionTypeName(): UDT.ITextType;
 }
@@ -850,7 +850,7 @@ export interface ITransmissionGroupType {
 /**The colorGroup component provides color information about a specific item */
 export interface IColorGroupType {
     /**Identifies the item for which color is being described */
-    get ColorItemCode(): BasicTypes.IRequired<SCL.IColorItemEnumeratedType>;
+    get ColorItemCode(): BasicTypes.IRequired<SCL.ColorItemEnumeratedType>;
     /**Manufacturer-assigned color code */
     get ManufacturerColorCode(): UDT.ICodeType;
     /**Description of a color */
@@ -870,7 +870,7 @@ export interface IEngineType {
     /**Vehicle designated model year */
     get Modelyear(): QDT.IYearDateType;
     /**Class of sale */
-    get SelectClassCode(): SCL.ISaleClassEnumeratedType;
+    get SelectClassCode(): SCL.SaleClassEnumeratedType;
     /**Condition of vehicle */
     get Condition(): UDT.ITextType;
     /**Manufacturer-assigned model code of vehicle - Usually available in the VIN number (use NCIC code) */
@@ -879,7 +879,7 @@ export interface IEngineType {
     get VehicleStockString(): QDT.IStringType;
     get ColorGroup(): Iterable<IColorGroupType>;
     /**Type of engine on or for a boat */
-    get BoatEngineTypeCode(): SCL.IBoatEngineTypeEnumeratedType;
+    get BoatEngineTypeCode(): SCL.BoatEngineTypeEnumeratedType;
     /**Type of vehicle fueld */
     get FuelTypeCode(): SQDT.IFuelTypeCodeType;
     /**Measured in RPM is the prop speed at full throttle */
@@ -899,7 +899,7 @@ export interface IEngineType {
     /**Piston movement distance */
     get StrokeMeasure(): SQDT.ILengthMeasureType;
     /**Indicates the way the engine cylinder is configured */
-    get CylinderConfigurationCode(): SCL.ICylinderConfigurationEnumeratedType;
+    get CylinderConfigurationCode(): SCL.CylinderConfigurationEnumeratedType;
     /**Represents the number of cylinders in the vehicle engine */
     get NumberOfEngineCylindersNumeric(): UDT.INumericType;
     /**The type of system used to get the fuel into the engine cylinders */
@@ -913,7 +913,7 @@ export interface IEngineType {
     /**Indicates if the engine has a Power Trim */
     get PowerTrimIndicator(): UDT.IIndicatorType;
     /**The method required to start the engine */
-    get StartingSystemTypeCode(): SCL.IStartingSystemTypeEnumeratedType;
+    get StartingSystemTypeCode(): SCL.StartingSystemTypeEnumeratedType;
     /**System used to fire the engine */
     get IgnitionSystem(): UDT.ITextType;
     /**System used to lubricate the engine */
@@ -1065,7 +1065,7 @@ export interface ICertificationGroupType {
     /**Odometer reading when the vehicle was certified */
     get ActualOdometer(): SQDT.ILengthMeasureType;
     /**A code indicating how the vehicle was previously used */
-    get VehiclePreviousUseCode(): SCL.IVehicleUseContentType;
+    get VehiclePreviousUseCode(): SCL.VehicleUseContentType;
     /**Individual or company that owned the vehicle previously */
     get PreviousOwnerParty(): IPartyABIEType;
     get ClassAndWarranty(): Iterable<UDT.ITextType>;
@@ -1135,7 +1135,7 @@ export interface IPricingABIEType {
 /**A sum of money for which something is or may be bought or sold */
 export interface IPriceABIEType {
     /**A code specifying the type of price */
-    get PriceCode(): SCL.IPriceEnumeratedType;
+    get PriceCode(): SCL.PriceEnumeratedType;
     /**The monetary value of the price charged */
     get ChargeAmount(): UDT.IAmountType;
     /**A textual description of price */
@@ -1177,7 +1177,7 @@ export interface IPartsProductItemType {
     /**The description of a Part or Proudct Item as text */
     get PartItemDescription(): Iterable<UDT.ITextType>;
     /**Specifies whether the parts are indicated by manufacturer part code or part number */
-    get PartTypeCode(): SCL.IPartTypeEnumeratedType;
+    get PartTypeCode(): SCL.PartTypeEnumeratedType;
     /**Gifts, literature, keys, regular parts Inventory Class code used in DMS system */
     get PartClassCode(): UDT.ICodeType;
     /**Identifies the part manufacturer */
@@ -1209,7 +1209,7 @@ export interface IPartsProductItemType {
     /**The condition of a part */
     get PartConditionCode(): SQDT.IPartConditionCodeType;
     /**Units of measure */
-    get UOMCode(): SCL.IUOMEnumeratedType;
+    get UOMCode(): SCL.UOMEnumeratedType;
     /**Vehicle Maintenance Reporting Standards code */
     get VMRSCode(): UDT.ICodeType;
     /**Indicates level of stocking maintained by OEM for this part.  This pertains not only to the replentishment algorith, but the number of stocking locations */
@@ -1229,9 +1229,9 @@ export interface IPartsProductItemType {
     /**Service file description */
     get ServiceFileDescription(): UDT.ITextType;
     /**Part sales restriction */
-    get PartDealerSalesRestriction(): SCL.IPartSalesRestrictionCodeEnumeratedType;
+    get PartDealerSalesRestriction(): SCL.PartSalesRestrictionCodeEnumeratedType;
     /**Ordering Restrictions */
-    get PartOrderRestriction(): SCL.IPartOrderingRestrictionCodeEnumeratedType;
+    get PartOrderRestriction(): SCL.PartOrderingRestrictionCodeEnumeratedType;
     /**Source code for the part */
     get PartSourceCode(): UDT.ICodeType;
     /**Description of the source code */
@@ -1333,7 +1333,7 @@ export interface IBrandedInfoType {
 
 export interface ITaxType {
     /**Identifies the type tax */
-    get TaxTypeCode(): SCL.ITaxTypeEnumeratedType;
+    get TaxTypeCode(): SCL.TaxTypeEnumeratedType;
     /**Free form text description of tax amount */
     get TaxDescription(): Iterable<UDT.ITextType>;
     /**Actual amount of tax paid */
@@ -1347,7 +1347,7 @@ export interface ITaxType {
     /**Total non-taxable price */
     get NonTaxableAmount(): UDT.IAmountType;
     /**Tax type identification */
-    get TaxTypeIdCode(): SCL.ITaxTypeIdEnumeratedType;
+    get TaxTypeIdCode(): SCL.TaxTypeIdEnumeratedType;
     /**Determines whether the dealer wants to claim tax on the cost */
     get TaxabilityIndicator(): UDT.IIndicatorType;
     /**Indicates whether the tax is capitalized, meaning whether it is included in the monthly payments.  If the tax is not capitablized it is to be paid up front */
@@ -1389,7 +1389,7 @@ export interface IFleetQuantityType {
     /**Deprecated: Use VehicleMake*/
     get MakeString(): BasicTypes.IDeprecated<QDT.IStringType>;
     /**Class of vehicle */
-    get VehicleClassCode(): SCL.IVehicleClassEnumeratedType;
+    get VehicleClassCode(): SCL.VehicleClassEnumeratedType;
 }
 
 export interface IServiceCampaignType {
@@ -1435,7 +1435,7 @@ export interface IImageAttachmentExtendedType extends IImageAttachmentType {
     /**Free-form text description of the image.  This field is used to provide a more detailed description than the ImageTitle */
     get ImageDescription(): Iterable<UDT.ITextType>;
     /**Indicates the perspective from which the photo was taken */
-    get ImagePerspectiveCode(): SCL.IImagePerspectiveEnumeratedType;
+    get ImagePerspectiveCode(): SCL.ImagePerspectiveEnumeratedType;
     /**Indicate sthe usage preference */
     get UsagePreference(): IPreferenceABIEType;
     /**Used to provide additional information that helps describe the image.  Can be used to add additional notes about the image and information beyond a general description */
