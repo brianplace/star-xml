@@ -54,7 +54,7 @@ export interface ISenderType extends ISenderBaseType {
     /**Additional information about the sending platform */
     get SenderNameCode(): BasicTypes.IRequired & UDT.ICodeType;
     /**Physical address of the sender */
-    get URI(): QDT.IURIType;
+    get URI(): QDT.URIType;
     /**Dealer Code of source of information */
     get DealerNumberID(): UDT.IIdentiferType;
     /**Dealer code store number */
@@ -70,7 +70,7 @@ export interface ISenderType extends ISenderBaseType {
     /**Token for application specific authentication.  Used to authenticate dealership/users through application specific security */
     get Password(): UDT.ITextType;
     /**The sender's software version number */
-    get SystemVersion(): QDT.IStringType;
+    get SystemVersion(): QDT.StringType;
     /**The party ID field uniquely identifies the Sender of the message.  This element can be used for parties wtihin the Automotive Community as well as external parties.  Party Id is not intended as a replacement for the Dealer Number. */
     get PartyID(): UDT.IIdentiferType;
     /**The Location Id field uniquely identifies the location of the Sender of a message. 
@@ -107,7 +107,7 @@ export interface IDestinationType {
     /**Code for destination of file */
     get DestinationNameCode(): UDT.ICodeType;
     /**Physical address of the destination */
-    get DestinationURI(): QDT.IURIType;
+    get DestinationURI(): QDT.URIType;
     /**Additional information about the destination application */
     get DestinationSoftwareCode(): UDT.ITextType;
     /**For which software destiantion file is inteded */
@@ -154,7 +154,7 @@ export interface IShowType extends IResponseVerbType {
     get recordSetCount(): BasicTypes.IAttribute & OAGIS.PositiveIntegerNumericType;
     get recordSetTotle(): BasicTypes.IAttribute & OAGIS.PositiveIntegerNumericType;
     get recordSetCompleteIndicator(): BasicTypes.IAttribute & UDT.IIndicatorType;
-    get recordSetReferenceId(): BasicTypes.IAttribute & QDT.INormalizedStringType;
+    get recordSetReferenceId(): BasicTypes.IAttribute & QDT.NormalizedStringType;
 }
 
 export interface IResponseVerbType extends OAGIS.VerbType {
@@ -487,7 +487,7 @@ export interface IPrivacyType {
     /**Indicator to note that Business Party has requested to share or not share information with third parties. */
     get PrivacyIndicator(): UDT.IIndicatorType;
     /**Code identifying a Party's authorized privacy rights */
-    get PrivacyTypeString(): QDT.IStringType;
+    get PrivacyTypeString(): QDT.StringType;
     /**The start and end dates for the period that privacy should be applied */
     get PrivacyPeriod(): IPeriodABIEType;
 }
@@ -576,11 +576,11 @@ export interface IEventType {
 
 export interface IVehicleInventoryInvoiceType {
     /**Invoice number */
-    get InvoiceNumberString(): QDT.IStringType;
+    get InvoiceNumberString(): QDT.StringType;
     /**Invoice total */
     get InvoiceTotalAmount(): UDT.IAmountType;
     /**Shipment carrier-assigned load number */
-    get LoadNumberString(): QDT.IStringType;
+    get LoadNumberString(): QDT.StringType;
     /**Border Crossing indicator */
     get BorderCrossingIndicator(): UDT.IIndicatorType;
     /**Estimated time of arrival */
@@ -596,7 +596,7 @@ export interface IVehicleInventoryInvoiceType {
     /**The Tax component represents information about a particular tax including information about the type of tax and the amount of the tax. */
     get Tax(): Iterable<ITaxType>;
     /**The number given to an order by a dealer */
-    get DealerAssignedNumberString(): QDT.IStringType;
+    get DealerAssignedNumberString(): QDT.StringType;
     /**The date the current status was recorded */
     get StatusDate(): UDT.IDateType;
     /**The date the OEM expects to build the vehicle */
@@ -625,9 +625,9 @@ export interface IVehicleInventoryVehicleLineItemType {
     /**Odometer reading of vehicle at time of delivery */
     get DeliveryDistanceMeasure(): SQDT.ILengthMeasureType;
     /**Door Key Number */
-    get DoorKeyNumberString(): QDT.IStringType;
+    get DoorKeyNumberString(): QDT.StringType;
     /**Vehicle Ignition Key Number */
-    get IgnitionKeyNumberString(): QDT.IStringType;
+    get IgnitionKeyNumberString(): QDT.StringType;
     /**Indicates whether the vehicle was produced for the United States or not. */
     get NonUSVehicleIndicator(): UDT.IIndicatorType;
     /**Status of odometer at trade-in */
@@ -653,7 +653,7 @@ export interface IVehicleInventoryVehicleLineItemType {
     /**Date shipped from warehouse or distribution center */
     get VehicleShipDate(): UDT.IDateType;
     /**Dealer assigned vehicle stock number */
-    get VehicleStockString(): QDT.IStringType;
+    get VehicleStockString(): QDT.StringType;
     /**Provides pricing information */
     get Pricing(): Iterable<IPricingABIEType>;
     /**Dealer incentive */
@@ -662,7 +662,7 @@ export interface IVehicleInventoryVehicleLineItemType {
     get Tax(): Iterable<ITaxType>;
     get FleetAccount(): IFleetAccountType;
     /**State License plate number of vehicle */
-    get LicenseNumberString(): QDT.IStringType;
+    get LicenseNumberString(): QDT.StringType;
     /**Vehicle status code */
     get VehicleStatusCode(): UDT.ICodeType;
     /**The option represents information about a vehicle's options */
@@ -697,11 +697,11 @@ export interface IVehicleABIEType {
     /**Manufacturer-assigned model code of vehicle - Usually available in the VIN numbe r(use NCIC code) */
     get Model(): UDT.ITextType;
     /**Vehicle designated model year */
-    get ModelYear(): QDT.IYearDateType;
+    get ModelYear(): QDT.YearDateType;
     /**Descriptive vehicle model name */
     get ModelDescription(): Iterable<UDT.ITextType>;
     /**Vehicle make code - usually available in the VIN number (use NCIC code) */
-    get MakeString(): QDT.IStringType;
+    get MakeString(): QDT.StringType;
     /**Class of sale */
     get SaleClassCode(): SCL.SaleClassEnumeratedType;
     /**Condition of vehicle */
@@ -763,7 +763,7 @@ export interface IVehicleABIEType {
     /**The name corresponding to the SeriesCode.  This is different from Make and Model */
     get SeriesName(): UDT.ICodeType;
     /**Dealer assigned vehicle stock number */
-    get VehicleStockString(): QDT.IStringType;
+    get VehicleStockString(): QDT.StringType;
     /**A detailed description for the vehicle */
     get VehicleDescription(): Iterable<UDT.ITextType>;
     /**Indicates the weight of the item when all fluids are empty */
@@ -864,11 +864,11 @@ export interface IColorGroupType {
 /**The Engine component provides detail information about an engine */
 export interface IEngineType {
     /**Deprecated: Use VehicleMake */
-    get MakeString(): BasicTypes.IDeprecated & QDT.IStringType;
+    get MakeString(): BasicTypes.IDeprecated & QDT.StringType;
     /**Descriptive vehicle model name */
     get ModelDescription(): Iterable<UDT.ITextType>;
     /**Vehicle designated model year */
-    get Modelyear(): QDT.IYearDateType;
+    get Modelyear(): QDT.YearDateType;
     /**Class of sale */
     get SelectClassCode(): SCL.SaleClassEnumeratedType;
     /**Condition of vehicle */
@@ -876,7 +876,7 @@ export interface IEngineType {
     /**Manufacturer-assigned model code of vehicle - Usually available in the VIN number (use NCIC code) */
     get Model(): UDT.ITextType;
     /**Dealer asigned vehicle stock number */
-    get VehicleStockString(): QDT.IStringType;
+    get VehicleStockString(): QDT.StringType;
     get ColorGroup(): Iterable<IColorGroupType>;
     /**Type of engine on or for a boat */
     get BoatEngineTypeCode(): SCL.BoatEngineTypeEnumeratedType;
@@ -933,15 +933,15 @@ export interface IEngineType {
     /**Text description of the transmission */
     get DriveTransmissionDescription(): Iterable<UDT.ITextType>;
     /**Engine serial number */
-    get EngineSerialString(): QDT.IStringType;
+    get EngineSerialString(): QDT.StringType;
     /**Drive serial number */
-    get DriveSerialString(): QDT.IStringType;
+    get DriveSerialString(): QDT.StringType;
     /**The serial number of the Transom Shield Kit (TSK) */
-    get TransomShieldKitSerialString(): QDT.IStringType;
+    get TransomShieldKitSerialString(): QDT.StringType;
     /**V-Drive serial number */
-    get VDriveSerialString(): QDT.IStringType;
+    get VDriveSerialString(): QDT.StringType;
     /**The serial number of the transmission */
-    get TransmissionSerialString(): QDT.IStringType;
+    get TransmissionSerialString(): QDT.StringType;
     /**Indicates the weight of the item when all fluids are empty */
     get DryWeightMeasure(): SQDT.IWeightMeasureType;
     /**Indicates the weight of the item when all fluids are present */
@@ -1069,7 +1069,7 @@ export interface ICertificationGroupType {
     /**Individual or company that owned the vehicle previously */
     get PreviousOwnerParty(): IPartyABIEType;
     get ClassAndWarranty(): Iterable<UDT.ITextType>;
-    get RepairOrderNumber(): Iterable<QDT.IStringType>;
+    get RepairOrderNumber(): Iterable<QDT.StringType>;
 }
 
 /**The grouping of Vehicles that a Labor Operation ID corresponds.  
@@ -1104,7 +1104,7 @@ export interface IOptionABIEType {
     /**Name of vehicle options */
     get OptionName(): UDT.ITextType;
     /**Stock Number of vehicle options */
-    get OptionStockNumberString(): QDT.IStringType;
+    get OptionStockNumberString(): QDT.StringType;
     /**Item manufacturer name */
     get ManufacturerName(): UDT.INameType;
     /**Free form text related to option */
@@ -1320,9 +1320,9 @@ export interface IBrandedInfoType {
     /**Branding Date */
     get BrandedTitleDate(): UDT.IDateType;
     /**Branding State Code */
-    get BrandingStateCodeString(): QDT.IStringType;
+    get BrandingStateCodeString(): QDT.StringType;
     /**Branding State Reference Number */
-    get BrandingStateReferenceString(): QDT.IStringType;
+    get BrandingStateReferenceString(): QDT.StringType;
     /**Branding source */
     get BrandingSource(): UDT.ITextType;
     /**A title identification number */
@@ -1365,11 +1365,11 @@ export interface ITaxType {
 /**Fleet account information associated with a vehicle */
 export interface IFleetAccountType {
     /**Manufacturer defined fleet account number */
-    get FleetAccountString(): QDT.IStringType;
+    get FleetAccountString(): QDT.StringType;
     /**Uniquely identifies the vehicle as part of a fleet company */
     get FleetVehicleID(): UDT.IIdentiferType;
     /**Fleet Purchase order number vehicle was purchased under */
-    get FleetPurchaseOrderNumberString(): QDT.IStringType;
+    get FleetPurchaseOrderNumberString(): QDT.StringType;
     /**Vehicle available to Fleet Indicator */
     get FleetAvailableIndicator(): UDT.IIndicatorType;
     /**Indicates that this vehicle only available to flee */
@@ -1387,14 +1387,14 @@ export interface IFleetQuantityType {
     /**This value represents the number of vehicles */
     get FleetCountNumeric(): BasicTypes.IRequired & UDT.INumericType;
     /**Deprecated: Use VehicleMake*/
-    get MakeString(): BasicTypes.IDeprecated & QDT.IStringType;
+    get MakeString(): BasicTypes.IDeprecated & QDT.StringType;
     /**Class of vehicle */
     get VehicleClassCode(): SCL.VehicleClassEnumeratedType;
 }
 
 export interface IServiceCampaignType {
     /**Manufacturer assigned campaign number */
-    get CampaignNumberString(): QDT.IStringType;
+    get CampaignNumberString(): QDT.StringType;
     /**Manufacturer assigned Campaign Option Code */
     get CampaignOptionCode(): UDT.ICodeType;
     /**A campaign related field specifying the reimbursement code for a campaign service. Reimbursement codes denote the mix of part and labor operations the dealer used to perform the service. */
@@ -1446,7 +1446,7 @@ export interface IImageAttachmentType {
     /**A unique identifier for this image.  Can be used to help uniqely identify multiple images but of different sizes and types */
     get ID(): UDT.IIdentiferType;
     /**URI */
-    get URI(): QDT.IURIType;
+    get URI(): QDT.URIType;
     /**Image tag width. */
     get ImageWidthMeasure(): SQDT.ILengthMeasureType;
     /**Image tag height */
@@ -1457,7 +1457,7 @@ export interface IImageAttachmentType {
 
 export interface IEmbeddedDataType {
     /**Container to carry the embedded data */
-    get DataString(): QDT.IStringType;
+    get DataString(): QDT.StringType;
 }
 
 export interface IIncentiveABIEType {
