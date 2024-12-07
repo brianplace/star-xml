@@ -1,8 +1,9 @@
-export interface IRequired<T> {
+export interface IRequired {
 }
-export interface IDeprecated<T> {
+
+export interface IDeprecated {
 }
-export interface IAttribute<T> {
+export interface IAttribute {
 }
 export interface IanyURI {
 }

@@ -16,43 +16,43 @@ export interface IBusinessObjectDocumentType {
     /**Provides the information that an application may need to know in order to communicate in an integration of two or more business applications.  
      * The ApplicationArea is used at the application layer of communication.  
      * While the integration frameworks web services and middleware provide the communication layer that OAGIS operates on top of */
-    get ApplicationArea(): BasicTypes.IRequired<IApplicationAreaType>;
+    get ApplicationArea(): BasicTypes.IRequired & IApplicationAreaType;
     /**STAR Release this BOD Instances belongs.  
      * This should contain the STAR repository version in the following recommended format.  
      * 5.1.4_M20080328.  
      * Where the first part indicates the version of the STAR repository and anything after the "_" indicates the Milestone build that is being used.  
      * If referring to an official published version then only the STAR Repository version is required */
-    get releaseID(): BasicTypes.IRequired<BasicTypes.IAttribute<UDT.IString>>;
+    get releaseID(): BasicTypes.IRequired & BasicTypes.IAttribute & UDT.IString;
     /**Recommended to use releaseID to identify the repository and noun.  Indicates the version of the given BOD definition */
-    get versionID(): BasicTypes.IDeprecated<BasicTypes.IAttribute<UDT.IString>>;
+    get versionID(): BasicTypes.IDeprecated & BasicTypes.IAttribute & UDT.IString;
     /**Indicates whether this BOD is being sent in a "Test" or a "Production" mode.  
      * Default="Production" */
-    get systemEnvironmentCode(): BasicTypes.IAttribute<OACL.SystemEnvironmentCodeContentType>;
+    get systemEnvironmentCode(): BasicTypes.IAttribute & OACL.SystemEnvironmentCodeContentType;
     /**Indicates the language that the contents of the BOD is in unless otherwise stated.  
      * Default="en-US" */
-    get languageCode(): BasicTypes.IAttribute<SCL.LanguageEnumeratedType>;
+    get languageCode(): BasicTypes.IAttribute & SCL.LanguageEnumeratedType;
 }
 
 export interface IApplicationAreaType {
     /**This identifies characteristics and control identifiers that relate to the application that created the Business Object Document */
-    get Sender(): BasicTypes.IRequired<ISenderType>;
+    get Sender(): BasicTypes.IRequired & ISenderType;
     /**This is used as the creation moment of this Business Object Document */
-    get CreationDateTime(): BasicTypes.IRequired<UDT.IDateTimeType>;
+    get CreationDateTime(): BasicTypes.IRequired & UDT.IDateTimeType;
     /**If the BOD is to be signed the signature element is included, otherwise it is not.  Signature supports any digital signature that may be used by an implementation of OAGIS.  The qualifying Agency identifies the agency that provided the format for the signature */
     get Signature(): OAGIS.SignatureType;
     /**The BODId provides a place to carry a Globally Unique Identifier (GUID) that will make each Business Object Document instance uniquely identifiable. 
      * This is a critical success factor to enable software developers to use the Globally Unique Identifier (GUID) to build services or capabilities*/
     get BODID(): UDT.IIdentiferType;
     /**This identifies characteristics and control identifiers that relate to the application that receives the Business Object Document. */
-    get Destination(): BasicTypes.IRequired<IDestinationType>;
+    get Destination(): BasicTypes.IRequired & IDestinationType;
 }
 
 /**This identifies characteristics and control identifiers that relate to the application that created the Business Object Document. */
 export interface ISenderType extends ISenderBaseType {
     /**DCS Software Creator Code */
-    get CreatorNameCode(): BasicTypes.IRequired<UDT.ITextType>;
+    get CreatorNameCode(): BasicTypes.IRequired & UDT.ITextType;
     /**Additional information about the sending platform */
-    get SenderNameCode(): BasicTypes.IRequired<UDT.ICodeType>;
+    get SenderNameCode(): BasicTypes.IRequired & UDT.ICodeType;
     /**Physical address of the sender */
     get URI(): QDT.IURIType;
     /**Dealer Code of source of information */
@@ -150,11 +150,11 @@ export interface IShowVehicleInventoryDataAreaType {
 }
 
 export interface IShowType extends IResponseVerbType {
-    get recordSetStartNumber(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
-    get recordSetCount(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
-    get recordSetTotle(): BasicTypes.IAttribute<OAGIS.PositiveIntegerNumericType>;
-    get recordSetCompleteIndicator(): BasicTypes.IAttribute<UDT.IIndicatorType>;
-    get recordSetReferenceId(): BasicTypes.IAttribute<QDT.INormalizedStringType>;
+    get recordSetStartNumber(): BasicTypes.IAttribute & OAGIS.PositiveIntegerNumericType;
+    get recordSetCount(): BasicTypes.IAttribute & OAGIS.PositiveIntegerNumericType;
+    get recordSetTotle(): BasicTypes.IAttribute & OAGIS.PositiveIntegerNumericType;
+    get recordSetCompleteIndicator(): BasicTypes.IAttribute & UDT.IIndicatorType;
+    get recordSetReferenceId(): BasicTypes.IAttribute & QDT.INormalizedStringType;
 }
 
 export interface IResponseVerbType extends OAGIS.VerbType {
@@ -179,7 +179,7 @@ export interface IVehicleInventoryType {
     /**Deprecated: Use VehicleInventoryInvoice.  
      * This field was deperecated to align with the naming and design rules.   
      * This is left in for compatibility reasons, but will be removed in the next major version of STAR. */
-    get Invoice(): BasicTypes.IDeprecated<Iterable<IVehicleInventoryInvoiceType>>;
+    get Invoice(): BasicTypes.IDeprecated & Iterable<IVehicleInventoryInvoiceType>;
     /**Detailed information regarding a vehicle in inventory. */
     get VehicleInventoryInvoice(): Iterable<IVehicleInventoryInvoiceType>;
 }
@@ -205,13 +205,13 @@ export interface IHeaderBaseType {
     /**Identifies secondary dealer number if different than primary "Dealer Number" */
     get SecondaryDealerNumberID(): UDT.IIdentiferType;
     /**A group of identifications that uniquely identifies this document */
-    get DocumentIdentificationGroup(): BasicTypes.IRequired<IDocumentIdentificationGroupType>;
+    get DocumentIdentificationGroup(): BasicTypes.IRequired & IDocumentIdentificationGroupType;
 }
 
 /**A list of identifications related to a particular document */
 export interface IDocumentIdentificationGroupType {
     /**A group of identifications that uniquely identifies this document */
-    get DocumentIdentification(): BasicTypes.IRequired<IDocumentIdentificationType>;
+    get DocumentIdentification(): BasicTypes.IRequired & IDocumentIdentificationType;
     /**An alternate identification that uniquely identifies this document in addition to the Document ID, e.g., Part Order Number, Parts Purchase Order Number or Parts Invoice Number. */
     get AlternateDocumentIdentification(): Iterable<IDocumentIdentificationType>;
 }
@@ -219,7 +219,7 @@ export interface IDocumentIdentificationGroupType {
 /**An identifier for this document */
 export interface IDocumentIdentificationType {
     /**The DocumentID is the identifier for the document. This identifier is a GUID or other unique identifier set by the creator of the document. */
-    get DocumentID(): BasicTypes.IRequired<UDT.IIdentiferType>;
+    get DocumentID(): BasicTypes.IRequired & UDT.IIdentiferType;
     /**The agency role that defined the Document ID. An example of an agency may be a manufacturer, a retail system provider, etc. This list does not contain specific entity names, only roles. See enumerated list. */
     get AgencyRoleCode(): SQDT.IAgencyRoleCodeType;
 } 
@@ -497,7 +497,7 @@ export interface ICommunicationABIEType {
     /**The unique identifier of the Uniform Resource Identifier (URI) for this communication such as an email address */
     get URIID(): UDT.IIdentiferType;
     /**The code specifying the channel or manner in which a communication can be made, such as telephone or email */
-    get ChannelCode(): BasicTypes.IRequired<UDT.ICodeType>;
+    get ChannelCode(): BasicTypes.IRequired & UDT.ICodeType;
     /**The communication number, expressed as text and not including country access code or the area number code, for this communication */
     get LocalNumber(): UDT.ITextType;
     /**The text string of characters that make up the complete number for this communication */
@@ -850,7 +850,7 @@ export interface ITransmissionGroupType {
 /**The colorGroup component provides color information about a specific item */
 export interface IColorGroupType {
     /**Identifies the item for which color is being described */
-    get ColorItemCode(): BasicTypes.IRequired<SCL.ColorItemEnumeratedType>;
+    get ColorItemCode(): BasicTypes.IRequired & SCL.ColorItemEnumeratedType;
     /**Manufacturer-assigned color code */
     get ManufacturerColorCode(): UDT.ICodeType;
     /**Description of a color */
@@ -864,7 +864,7 @@ export interface IColorGroupType {
 /**The Engine component provides detail information about an engine */
 export interface IEngineType {
     /**Deprecated: Use VehicleMake */
-    get MakeString(): BasicTypes.IDeprecated<QDT.IStringType>;
+    get MakeString(): BasicTypes.IDeprecated & QDT.IStringType;
     /**Descriptive vehicle model name */
     get ModelDescription(): Iterable<UDT.ITextType>;
     /**Vehicle designated model year */
@@ -1011,7 +1011,7 @@ export interface IEngineDimensionsType {
 /**A general term that refers to all of the mechanical parts of a car attached to a structural frame. In cars with unitized construction, the chassis comprises everything but the body of the car. */
 export interface IChassisType {
     /**Make of chassis */
-    get ChassisMake(): BasicTypes.IRequired<UDT.ITextType>;
+    get ChassisMake(): BasicTypes.IRequired & UDT.ITextType;
     /**Model of chassis */
     get ChassisModel(): UDT.ITextType;
     /**Unique identifier for the chassic */
@@ -1021,7 +1021,7 @@ export interface IChassisType {
 /**A large, often metallic container for holding or storing liquids or gases. */
 export interface ITankType {
     /**The purpose or usage of this tank */
-    get TankUsageCode(): BasicTypes.IRequired<SQDT.ITankUsageCodeType>;
+    get TankUsageCode(): BasicTypes.IRequired & SQDT.ITankUsageCodeType;
     /**The type of Material the Tank is constructed from */
     get TankMaterialCode(): SQDT.ITankMaterialCodeType;
     /**How much the tank can hold */
@@ -1084,7 +1084,7 @@ export interface IVehicleIdentificationGroupType {
 /**Component to communicate important dates and events for a vehicle */
 export interface IVehicleHistoryDateGroupType {
     /**Date when an important event took place for a vehicle */
-    get VehicleHistoryDate(): BasicTypes.IRequired<UDT.IDateType>;
+    get VehicleHistoryDate(): BasicTypes.IRequired & UDT.IDateType;
     /**Type code of the event that ook place on the Vehicle History Date */
     get VehicleHistoryTypeCode(): UDT.ICodeType;
     /**Description of the event that took place on VehicleHistoryDate */
@@ -1171,7 +1171,7 @@ export interface ILocationABIEType {
 /**The business information common to all product items */
 export interface IPartsProductItemType {
     /**Deprecated: Use ItemIdentificationGroup */
-    get ItemID(): BasicTypes.IDeprecated<UDT.IIdentiferType>;
+    get ItemID(): BasicTypes.IDeprecated & UDT.IIdentiferType;
     /**The name of a Part or Product Item as text */
     get PartName(): Iterable<UDT.ITextType>;
     /**The description of a Part or Proudct Item as text */
@@ -1191,7 +1191,7 @@ export interface IPartsProductItemType {
     /**The category a part number is associated with */
     get ItemIDCategoryTypeCode(): SQDT.IItemIDCategoryTypeCodeType;
     /**Deprecate: Use ItemIdentificationGroup */
-    get AlternateItemIDs(): BasicTypes.IDeprecated<Iterable<IAlternateItemIDsType>>;
+    get AlternateItemIDs(): BasicTypes.IDeprecated & Iterable<IAlternateItemIDsType>;
     /**A group of identifications that uniquely identifies this document */
     get ItemIdentificationGroup(): IItemIdentificationGroupType;
     /**A number, usually one of a series, assigned for identification.  This is not the Item ID */
@@ -1247,7 +1247,7 @@ export interface IPartsProductItemType {
 /**Used to provide alternate IDs for an item such as OEM part number, ACDELCO part number, UPC, etc. */
 export interface IAlternateItemIDsType {
     /**The identifier of an item */
-    get ItemID(): BasicTypes.IRequired<UDT.IIdentiferType>;
+    get ItemID(): BasicTypes.IRequired & UDT.IIdentiferType;
     /**The category a part number is associated with */
     get ItemIDCategoryTypeCode(): SQDT.IItemIDCategoryTypeCodeType;
 }
@@ -1260,7 +1260,7 @@ export interface IItemIdentificationGroupType {
 /**An identifier for an item */
 export interface IItemIdentificationType {
     /**The identifier of an item */
-    get ItemID(): BasicTypes.IRequired<UDT.IIdentiferType>;
+    get ItemID(): BasicTypes.IRequired & UDT.IIdentiferType;
     /**The agency role that defined the Item. An example of an agency may be a manufacturer, a retail system provider, etc. This list does not contain specific entity names, only roles. Use of the schemaAgencyName should be used to identify the agency defining the Role. Roles are defined in the enumeration. */
     get AgencyRoleCode(): SQDT.IAgencyRoleCodeType;
 }
@@ -1385,9 +1385,9 @@ export interface IFleetAccountType {
 /**This component keeps track of the number of vehicles, make, and vehicle class that are currently on the Fleet Account */
 export interface IFleetQuantityType {
     /**This value represents the number of vehicles */
-    get FleetCountNumeric(): BasicTypes.IRequired<UDT.INumericType>;
+    get FleetCountNumeric(): BasicTypes.IRequired & UDT.INumericType;
     /**Deprecated: Use VehicleMake*/
-    get MakeString(): BasicTypes.IDeprecated<QDT.IStringType>;
+    get MakeString(): BasicTypes.IDeprecated & QDT.IStringType;
     /**Class of vehicle */
     get VehicleClassCode(): SCL.VehicleClassEnumeratedType;
 }
@@ -1462,19 +1462,19 @@ export interface IEmbeddedDataType {
 
 export interface IIncentiveABIEType {
     /**Incentive element can have multiple occurrences. Unique incentive identifier */
-    get IncentiveID(): BasicTypes.IRequired<UDT.IIdentiferType>;
+    get IncentiveID(): BasicTypes.IRequired & UDT.IIdentiferType;
     /**Type of incentive */
-    get IncentiveSourceType(): BasicTypes.IRequired<UDT.ITextType>;
+    get IncentiveSourceType(): BasicTypes.IRequired & UDT.ITextType;
     /**Type of Dealer Incentive */
-    get IncentiveType(): BasicTypes.IRequired<UDT.ITextType>;
+    get IncentiveType(): BasicTypes.IRequired & UDT.ITextType;
     /**Dealer Incentive Name */
-    get IncentiveName(): BasicTypes.IRequired<UDT.ITextType>;
+    get IncentiveName(): BasicTypes.IRequired & UDT.ITextType;
     /**Dealer Incentive Description */
     get IncentiveDescription(): UDT.ITextType;
     /**Dealer Incentive Disclosure */
     get IncentiveDisclosure(): IIncentiveDisclosureABIEType;
     /**Flag indicating condition offer */
-    get IncentiveConditionalFlag(): BasicTypes.IRequired<UDT.ITextType>;
+    get IncentiveConditionalFlag(): BasicTypes.IRequired & UDT.ITextType;
     /** Dealer internal note */
     get IncentiveNote(): UDT.ITextType;
     /**Monetary incentive amount */
@@ -1490,9 +1490,9 @@ export interface IIncentiveABIEType {
     /**Incentive Incremental Reduction */
     get IncentiveIncrementalReduction(): Iterable<IIncentiveIncrementalReductionABIEType>;
     /**A specific period of time such as the length of time between two known date/time points, from a start date onwards, or up to an end date of when something is effective. */
-    get IncentiveEffectivePeriod(): BasicTypes.IRequired<IIncentiveEffectivePeriodABIEType>;
+    get IncentiveEffectivePeriod(): BasicTypes.IRequired & IIncentiveEffectivePeriodABIEType;
     /**Incentive start date */
-    get LastUpdated(): BasicTypes.IRequired<UDT.IDateTimeType>;
+    get LastUpdated(): BasicTypes.IRequired & UDT.IDateTimeType;
 }
 
 export interface IIncentiveDisclosureABIEType {
@@ -1536,7 +1536,7 @@ export interface IChangeVehicleInventoryDataAreaType {
 }
 
 export interface IChangeType extends IActionVerbType {
-    get responseCode(): BasicTypes.IAttribute<OACL.ResponseActionCodeContentType>;
+    get responseCode(): BasicTypes.IAttribute & OACL.ResponseActionCodeContentType;
 }
 
 export interface IActionVerbType extends OAGIS.VerbType {
